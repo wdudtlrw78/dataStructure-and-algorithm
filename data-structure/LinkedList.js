@@ -1,71 +1,135 @@
-const LinkedList = (function () {
-    function LinkedList() {
-        this.length = 0;
+class Node {
+    constructor(data) {
+        this.data = data;
+        this.next = null
+    }
+}
+
+class LinkedList {
+    constructor() {
         this.head = null;
+        this.size = 0;
     }
 
-    function Node(data) {
-        this.data = data;
-        this.next = null;
-    }
-    LinkedList.prototype.add = function (value) {
-        const node = new Node(value);
-        let current = this.head;
-        if (!current) { // 현재 아무 노드도 없으면
-            this.head = node; // head에 새로운 노드 추가
-            this.length++;
-            return node;
-        } else { // 이미 노드가 있으면
-            while (current.next) { // 마지막 노드 접근
+    add(data) {
+        let node = new Node(data);
+        let current;
+
+        if (this.head == null)
+            this.head = node;
+        else {
+            current = this.head;
+
+            while (current.next) {
                 current = current.next;
             }
+            current.next = node;
         }
-        current.next = node; // 마지막 위치에 노드 추가
-        this.length++;
-        return node;
+        this.size++;
     }
 
-    LinkedList.prototype.search = function (position) {
-        let current = this.head;
-        let count = 0;
-        while (count < position) { // position 위치만큼 이동
-            current = current.next;
-            count++;
-        }
-        return current.data;
-    }
-    LinkedList.prototype.remove = function (position) {
-        let current = this.head;
-        let before;
-        let remove;
-        let count = 0;
-        if (position == 0) { // 맨 처음 노드를 삭제하면
-            remove = this.head;
-            this.head = this.head.next; // head를 두 번째 노드로 교체
-            this.length--;
-            return remove;
-        } else { // 그 외의 다른 노드를 삭제하면
-            while (count < position) {
-                before = current;
-                count++;
-                current = current.next; 
+    insertAt(data, index) {
+        if (index > 0 && index > this.size)
+            return false;
+        else {
+            let node = new Node(data);
+            let curr;
+            let prev;
+
+            curr = this.head;
+
+            if (index == 0) {
+                node.next = this.head;
+                this.head = node;
+            } else {
+                curr = this.head;
+                let it = 0;
+
+                while (it < index) {
+                    it++;
+                    prev = curr;
+                    curr = curr.next;
+                }
+                node.next = curr;
+                prev.next = node;
             }
-            remove = current;
-            before.next = remove.next;
-            // remove 메모리 정리
-            this.length--;
-            return remove;
+            this.size++;
         }
     }
-    return LinkedList;
-})();
 
-const list = new LinkedList();
-list.add(1);
-list.add(2);
-list.add(3);
-console.log(list.length); // 3
-console.log(list.search(0)); // 1
-console.log(list.search(2))// 3
-list.remove(1);
-console.log(list.length) // 2
+    remove(index) {
+        if (index > 0 && index > this.size)
+            return -1;
+        else {
+            let curr = 0;
+            let prev = 0;
+            let it = 0;
+            curr = this.head;
+            prev = curr;
+
+            if (index === 0) {
+                this.head = curr.next;
+            } else {
+
+                while (it < index) {
+                    it++;
+                    prev = curr;
+                    curr = curr.next;
+                }
+                prev.next = curr.next;
+            }
+            this.size--;
+            return curr.data;
+        }
+    }
+
+    indexOf(data) {
+        var count = 0;
+        var current = this.head;
+
+        while (current !== null) {
+            if (current.data === data)
+                return count;
+            count++;
+            current = current.next;
+        }
+
+        return -1;
+    }
+
+    isEmpty() {
+        return this.size == 0;
+    }
+
+    length() {
+        console.log(this.size);
+    }
+
+    printList() {
+        var curr = this.head;
+        var str = "";
+        while (curr) {
+            str += curr.data + " ";
+            curr = curr.next;
+        }
+        console.log(str);
+    }
+}
+
+const ll = new LinkedList();
+
+console.log(ll.isEmpty()); // true
+ll.add(10); // 10
+ll.printList(); // 10
+console.log(ll.length()); // 1
+ll.add(20);
+ll.add(30);
+ll.add(40); 
+ll.add(50); 
+ll.printList(); // 10 20 30 40 50
+console.log(ll.indexOf(40)); // 3
+ll.insertAt(60, 2); 
+ll.printList(); // 10 20 60 30 40 50
+console.log(ll.isEmpty()); // false
+console.log(ll.remove(3)); 
+ll.printList(); // 10 20 60 40 50
