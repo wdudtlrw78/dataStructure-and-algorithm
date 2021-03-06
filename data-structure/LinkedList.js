@@ -61,8 +61,8 @@ class LinkedList {
         if (index > 0 && index > this.size)
             return -1;
         else {
-            let curr = 0;
-            let prev = 0;
+            let curr;
+            let prev;
             let it = 0;
             curr = this.head;
             prev = curr;
