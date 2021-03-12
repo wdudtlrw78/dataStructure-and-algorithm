@@ -1,0 +1,53 @@
+# create node
+
+class Node:
+  def __init__(self, value):
+    self.value = value
+    self.left = None
+    self.right = None
+
+# insert
+
+class NodeMgmt:
+  def __init__(self, head):
+    self.head = head
+
+  def insert(self, value):
+    self.current_node = self.head
+    while True:
+      # 현재 노드 값 보다 작다면
+      if value < self.current_node.value:
+        # node left에 node가 있다면
+        if self.current_node.left != None:
+          self.current_node = self.current_node.left
+        else :
+          self.current_node_left = Node(value)
+          break
+      else:
+        if self.current_node.right != None:
+          self.current_node = self.current_node.right
+        else:
+          self.current_node.right = Node(value)
+          break
+
+# search
+  def search(self, value):
+    self.current_node = self.head
+    while self.current_node:
+      if self.current_node.value == value:
+        return True
+      elif value < self.current_node.value:
+        self.current_node = self.current_node.left
+      else:
+        self.current_node = self.current_node.right
+    return False
+
+head = Node(1)
+BST = NodeMgmt(head)
+BST.insert(2)
+BST.insert(3)
+BST.insert(0)
+BST.insert(4)
+BST.insert(8)
+
+print(BST.search(-1))
