@@ -14,3 +14,19 @@ function factorial(num) {
 }
 
 console.log(factorial(10));
+
+function plus(num) {
+  if (num <= 1) return num
+  return num + plus(num - 1);
+}
+
+console.log(plus(10));
+
+function func(n) {
+  if (n === 1) return n
+  if (n % 2 === 1) return (func((3 * n) + 1))
+  else return (func(parseInt(n / 2)))
+}
+
+console.log(func(3));
+
