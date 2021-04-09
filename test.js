@@ -1,11 +1,15 @@
-const number = Array(50)
-  .fill(0)
-  .map((v, i) => i + 1);
-function sq(number, search) {
-  for (i = 0; i <= number.length; i++) {
-    if (number[i] === search) return i;
+const insertionSort = function (array) {
+  let i = 1,
+    j,
+    temp;
+  for (i; i < array.length; i++) {
+    temp = array[i];
+    for (j = i - 1; j >= 0 && temp < array[j]; j--) {
+      array[j + 1] = array[j];
+    }
+    array[j + 1] = temp;
   }
-  return -1;
-}
+  return array;
+};
 
-console.log(sq(number, 11));
+console.log(insertionSort([3, 1, 2, 7, 5, 4]));
