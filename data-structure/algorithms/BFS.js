@@ -1,3 +1,5 @@
+"use strict";
+
 const graph = {
   A: ["B", "C"],
   B: ["A", "D"],
