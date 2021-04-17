@@ -1,16 +1,16 @@
-"use strict";
+'use strict';
 
 const graph = {
-  A: ["B", "C"],
-  B: ["A", "D"],
-  C: ["A", "G", "H", "I"],
-  D: ["B", "E", "F"],
-  E: ["D"],
-  F: ["D"],
-  G: ["C"],
-  H: ["C"],
-  I: ["C", "J"],
-  J: ["I"],
+  A: ['B', 'C'],
+  B: ['A', 'D'],
+  C: ['A', 'G', 'H', 'I'],
+  D: ['B', 'E', 'F'],
+  E: ['D'],
+  F: ['D'],
+  G: ['C'],
+  H: ['C'],
+  I: ['C', 'J'],
+  J: ['I'],
 };
 
 const bfs = (graph, startNode) => {
@@ -31,5 +31,5 @@ const bfs = (graph, startNode) => {
   return visited;
 };
 
-console.log(bfs(graph, "A"));
+console.log(bfs(graph, 'A'));
 // ["A", "B", "C", "D", "G", "H", "I", "E", "F", "J"]
