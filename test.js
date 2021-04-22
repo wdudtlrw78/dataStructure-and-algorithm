@@ -1,20 +1,15 @@
 'use strict';
 
-const arr = [12, 77, 38, 41, 53, 92, 85];
-function solution(arr) {
-  let answer = [];
-  let sumNumber = 0,
-    min = Number.MAX_SAFE_INTEGER;
+const arr = [25, 23, 11, 47, 53, 17, 33];
 
+function solution(arr, t) {
+  let counter = 0;
   for (let x of arr) {
-    if (x % 2 === 1) {
-      sumNumber += x;
-      if (x < min) min = x;
+    if (x % 10 === t) {
+      counter++;
     }
   }
-  answer.push(sumNumber);
-  answer.push(min);
-  return answer;
+  return counter;
 }
 
-console.log(solution(arr));
+console.log(solution(arr, 7));
