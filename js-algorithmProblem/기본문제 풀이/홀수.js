@@ -17,4 +17,4 @@ function solution(arr) {
   return answer;
 }
 
-console.log(solution(arr));
+console.log(solution(arr)); // [256, 41]
