@@ -1,15 +1,14 @@
 'use strict';
 
-const arr = [25, 23, 11, 47, 53, 17, 33];
+const arr = ['good', 'time', 'good', 'time', 'student'];
 
-function solution(arr, t) {
-  let counter = 0;
-  for (let x of arr) {
-    if (x % 10 === t) {
-      counter++;
-    }
-  }
-  return counter;
+function solution(arr) {
+  let answer;
+
+  answer = arr.filter((v, i) => {
+    if (arr.indexOf(v) === i) return v;
+  });
+  return answer;
 }
 
-console.log(solution(arr, 7));
+console.log(solution(arr));
