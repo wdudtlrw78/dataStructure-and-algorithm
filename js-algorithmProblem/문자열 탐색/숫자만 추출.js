@@ -1,7 +1,8 @@
 'use strict';
 
-// 나의 코드 ( 내장 함수 )
 const arr = 'g0en2T0s8eSoft';
+
+// 나의 코드 ( 내장 함수 )
 
 function solution(arr) {
   let answer;
@@ -11,7 +12,6 @@ function solution(arr) {
 console.log(solution(arr));
 
 // 강의
-const arr = 'g0en2T0s8eSoft';
 
 function solution(arr) {
   let answer = '';
@@ -26,7 +26,6 @@ function solution(arr) {
 console.log(solution(arr));
 
 // 손 코딩 (parseInt X)
-const arr = 'g0en2T0s8eSoft';
 
 function solution(arr) {
   let answer = 0;
