@@ -9,7 +9,7 @@ function solution(s, n) {
     console.log(text);
     if (text === ' ') {
       answer += ' ';
-      // continue;
+      continue;
     }
     var textArr = upper.includes(text) ? upper : lower;
     var index = textArr.indexOf(text) + n;
@@ -19,6 +19,6 @@ function solution(s, n) {
   return answer;
 }
 
-// console.log(solution('AB', 1));
-// console.log(solution('z', 1));
+console.log(solution('AB', 1));
+console.log(solution('z', 1));
 console.log(solution('a B z', 4));
