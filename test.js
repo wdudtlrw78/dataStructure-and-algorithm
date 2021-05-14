@@ -1,8 +1,9 @@
-function solution(seoul) {
+function solution(s) {
   var answer = '';
-  const position = seoul.indexOf('Kim');
-  answer = `김서방은 ${position}에 있다`;
-  return answer;
+  const regexp = /^\-[\d]{1,5}$|^\+?[\d]{1,5}$/gm;
+
+  if (regexp.test(s)) return (answer = parseInt(s));
 }
 
-console.log(solution(['Jane', 'Kim']));
+console.log(solution('+1234'));
+console.log(solution('-1234'));
