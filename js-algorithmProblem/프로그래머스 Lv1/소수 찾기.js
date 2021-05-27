@@ -27,3 +27,5 @@ function solution(n) {
 
 console.log(solution(10));
 console.log(solution(5));
+console.log(solution(20));
+console.log(solution(30));
