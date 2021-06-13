@@ -1,32 +1,25 @@
 'use strict';
 
-const test = [
-  [3, 4, 1, 2],
-  [4, 3, 2, 1],
-  [3, 1, 4, 2],
-];
+function solution(arr) {
+  let answer;
+  let max = Number.MIN_SAFE_INTEGER;
+  for (let s of arr) {
+    let sum = 0;
+    let tmp = s;
+    while (tmp) {
+      sum += tmp % 10;
+      tmp = parseInt(tmp / 10);
+    }
 
-function solution(test) {
-  let answer = 0;
-  let n = test[0].length;
-  let m = test.length;
-
-  for (let i = 1; i <= n; i++) {
-    for (let j = 1; j <= n; j++) {
-      let cnt = 0;
-      for (let k = 0; k < m; k++) {
-        let pi, pj;
-        for (let s = 0; s < n; s++) {
-          if (test[k][s] === i) pi = s;
-          if (test[k][s] === j) pj = s;
-        }
-        if (pi < pj) cnt++;
-      }
-      if (cnt === m) answer++;
+    if (sum > max) {
+      max = sum;
+      answer = s;
+    } else if (sum === max) {
+      if (s > answer) answer = s;
     }
   }
+
   return answer;
 }
 
-console.log(solution(test));
-console.log(solution(test));
+console.log(solution([128, 460, 603, 40, 521, 137, 123]));

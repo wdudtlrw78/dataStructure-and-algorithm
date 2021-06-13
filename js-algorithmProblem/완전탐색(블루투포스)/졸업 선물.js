@@ -16,7 +16,9 @@ function solution(m, product) {
   for (let i = 0; i < n; i++) {
     let money = m - (product[i][0] / 2 + product[i][1]);
     let cnt = 1; // 할인 받은 1명
+    // console.log(product[i][0], product[i][1], money);
     for (let j = 0; j < n; j++) {
+      console.log(product[j][0], product[j][1], money);
       if (j !== i && product[j][0] + product[j][1] > money) break;
       if (j !== i && product[j][0] + product[j][1] <= money) {
         money -= product[j][0] + product[j][1];
