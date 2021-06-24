@@ -1,21 +1,27 @@
 'use strict';
 
-const arr = [13, 15, 34, 23, 45, 65, 33, 11, 26, 42];
+const a = [1, 2, 1, 3, 1, 1, 1, 2];
 
-function solution(card, n) {
-  let answer;
+function solution(arr, m) {
+  let answer = 0;
+  let n = arr.length;
 
-  let a = new Set();
-  for (let i = 0; i < card.length; i++) {
-    for (let j = i + 1; j < card.length; j++) {
-      for (let k = j + 1; k < card.length; k++) {
-        a.add(card[i] + card[j] + card[k]);
-      }
+  let p1 = 0;
+  let p2 = 0;
+  let sum = 0;
+
+  while (p1 < n && p2 < n) {
+    if (sum === m) {
+      answer++;
+      sum -= arr[p1++];
+    } else if (sum > m) {
+      sum -= arr[p1++];
+    } else {
+      sum += arr[p2++];
     }
   }
-  let s = Array.from(a).sort((a, b) => b - a);
-  answer = s[n - 1];
+
   return answer;
 }
 
-console.log(solution(arr, 3));
+console.log(solution(a, 6));
