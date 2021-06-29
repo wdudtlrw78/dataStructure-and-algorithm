@@ -1,0 +1,24 @@
+'use strict';
+
+const a = 'AbaAeCe';
+const b = 'baeeACA';
+
+function solution(str1, str2) {
+  let answer = 'YES';
+
+  let sH = new Map();
+
+  for (let x of str1) {
+    if (sH.has(x)) sH.set(x, sH.get(x) + 1);
+    else sH.set(x, 1);
+  }
+
+  for (let x of str2) {
+    if (!sH.has(x) || sH.get(x) === 0) return 'NO';
+    sH.set(x, sH.get(x) - 1);
+  }
+
+  return answer;
+}
+
+console.log(solution(a, b));
