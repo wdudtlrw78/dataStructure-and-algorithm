@@ -1,27 +1,19 @@
 'use strict';
 
-const a = [1, 2, 1, 3, 1, 1, 1, 2];
+const arr = [20, 7, 23, 19, 10, 15, 25, 8, 13];
 
-function solution(arr, m) {
-  let answer = 0;
-  let n = arr.length;
+function solution(arr) {
+  const sum = arr.reduce((acc, cur) => acc + cur);
+  const answer = arr;
 
-  let p1 = 0;
-  let p2 = 0;
-  let sum = 0;
-
-  while (p1 < n && p2 < n) {
-    if (sum === m) {
-      answer++;
-      sum -= arr[p1++];
-    } else if (sum > m) {
-      sum -= arr[p1++];
-    } else {
-      sum += arr[p2++];
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 1; j < arr.length - 1; j++) {
+      if (sum - (arr[i] + arr[j]) === 100) {
+        answer.splice(j, 1);
+        answer.splice(i, 1);
+      }
     }
   }
-
   return answer;
 }
-
-console.log(solution(a, 6));
+console.log(solution(arr));
