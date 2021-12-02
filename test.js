@@ -1,14 +1,10 @@
 'use strict';
 
-const arr = 'study';
+const arr = ['good', 'time', 'good', 'time', 'student'];
 
 function solution(arr) {
-  const count = Math.floor(arr.length / 2);
+  const answer = arr;
 
-  return arr.length % 2 === 0
-    ? arr
-        // good
-        .substring(count - 1, count + 1)
-    : arr.substring(count, count + 1);
+  return Array.from(new Set(answer));
 }
 console.log(solution(arr));
