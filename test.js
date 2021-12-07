@@ -1,14 +1,15 @@
 'use strict';
 
-const arr = [7, 3, 9, 5, 6, 12];
+const arr = [130, 135, 148, 140, 145, 150, 150, 153];
 
 function solution(arr) {
-  const answer = [];
-
-  answer.push(arr[0]);
-
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > arr[i - 1]) answer.push(arr[i]);
+  let answer = 1;
+  let max = arr[0];
+  for (let i = 0; i < arr.length; i++) {
+    if (max < arr[i]) {
+      max = arr[i];
+      answer++;
+    }
   }
 
   return answer;
